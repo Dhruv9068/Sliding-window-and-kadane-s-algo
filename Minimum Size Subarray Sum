@@ -1,0 +1,19 @@
+class Solution {
+
+
+    // sliding window taking two pointers l and r    
+    public int minSubArrayLen(int target, int[] nums) {
+        int l=0, total=0 ,res= Integer.MAX_VALUE;
+        for(int r=0;r<nums.length;r++){
+            total+=nums[r]; // total =2+3+1+2=8
+            while(total>=target){   
+                res= Math.min(r-l+1,res);
+                total-=nums[l]; //6
+                l++;
+            
+            }
+        }
+
+       return res==Integer.MAX_VALUE?0:res;
+    }
+}
